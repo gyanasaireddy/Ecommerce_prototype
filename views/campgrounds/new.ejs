@@ -1,0 +1,27 @@
+
+<%- include("../partials/header")%>
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6 text-center">
+        <h1>Add new campground</h1>
+        <div class="container d-flex justify-content-center">
+            <form action="/campgrounds" method="POST" style="width: 80%;">
+              <div class="form-group d-flex flex-column mx-3 mt-3 mb-1">
+                <input type="text" class="form-control mb-2"  placeholder="Name" name="name">
+                <input type="number" class="form-control mb-2"  placeholder="price" name="price" min="0.01" step="0.01">
+                <input type="text" class="form-control mb-2"  placeholder="Image Address" name="image">
+                <input type="text" class="form-control mb-2"  placeholder="Description" name="desc">
+                <input type="submit" class="btn btn-primary mb-2">
+              </div>
+            </form>
+          </div>
+        <a href="/campgrounds">Go Back</a>
+
+    </div>
+    <div class="col-lg-3"></div>
+    
+</div>
+</div>
+<%- include("../partials/footer")%>

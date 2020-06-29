@@ -1,0 +1,81 @@
+<%- include("../partials/header")%>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<p class="lead">
+				Yelpcamp
+			</p>
+			<ul class="list-group">
+				<li class="list-group-item active">Info 1</li>
+				<li class="list-group-item">Info 2</li>
+				<li class="list-group-item">Info 3</li>
+			</ul>
+		</div>
+		<div class="col-md-9 border p-2">
+			<div class="thumbnail img-fluid">
+				<img src="<%=camps.image%>" >
+			</div>
+			  <span class=""><strong><%=camps.name%></strong></span>
+			 <span class="float-right">
+				 $<%=camps.price%>/night
+			</span>
+						 <div class="d-block"><em>Subbmitted by - <strong><%=camps.author.username%></strong></em></div>
+						 <%if(currentUser && camps.author.id.equals(currentUser._id)){ %>
+			<a href="/campgrounds/<%=camps._id%>/edit" class="btn btn-success">Edit</a>
+			<form method="POST" action="/campgrounds/<%=camps._id%>?_method=DELETE" id="del">
+				<button class="btn btn-danger">
+					Delete
+				</button>
+				<%}%>
+
+			</form>
+ 			 <div class=""><em><%=camps.desc%></em></div>
+
+			
+			<div class="border p-2 my-2">
+				  <a href="/campgrounds/<%=camps._id%>/comments/new" class="btn btn-primary text-center my-2">Add New Comment</a>
+				 	 <div class="row">
+					  	  <% camps.comments.forEach(function(comment){%>
+							  <div class="col-md-12">
+									  <span><strong><%=comment.author.username%></strong></span>
+									  <span class="float-right">10 days ago</span>
+									  <p>
+										  <%=comment.text%>
+									 </p>
+									 <%if(currentUser && comment.author.id.equals(currentUser._id)){%>
+									 <form action="/campgrounds/<%=camps._id%>/comments/<%=comment._id%>/edit" method="POST" style="display: inline">
+										<button class="btn btn-sm btn-warning" type="submit">Edit</button>
+									 </form>
+									 <form action="/campgrounds/<%=camps._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST"style="display: inline">
+										<button class="btn btn-sm btn-danger">Delete</button>
+									 </form>
+									 <%}%>
+
+					   			</div>
+					  		<% })%>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	</div>
+<div class="container p-2 text-center">
+  <!-- <div class="text-center m-2"><strong><%=camps.name%></strong></div> -->
+  <!-- <div class="text-center"><%=camps.name%>></div> -->
+
+  <!-- <div class="text-center"><img src="<%=camps.image%>" ></div> -->
+  <!-- <div class="text-center m-2"><em><%=camps.desc%></em></div> -->
+		  
+
+  <!-- <% camps.comments.forEach(function(comment){%>
+      <p class="text-center"><strong><%=comment.author%> - </strong><%=comment.text%></p>
+
+ <% })%>
+	 -->
+  
+</div>
+
+
+<%- include("../partials/footer")%>

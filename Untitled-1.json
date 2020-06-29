@@ -1,0 +1,10 @@
+{
+  "instantMongo": {
+    "connections": [
+      {
+        "name": "New Database Connection",
+        "uri": "mongodb+srv://gyana:generatorx@cluster0-1jiqp.mongodb.net/test?retryWrites=true&w=majority"
+      }
+    ]
+  }
+}
